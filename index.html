@@ -1,33 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>3D Model Demo</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>3D Scene Viewer</title>
+  <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+    }
+    model-viewer {
+      width: 100%;
+      height: 500px;
+      margin-top: 20px;
+    }
+  </style>
 </head>
 <body>
-    <script>
-        const scene = new THREE.Scene();
-        const camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
-        const renderer = new THREE.WebGLRenderer();
-        renderer.setSize(window.innerWidth, window.innerHeight);
-        document.body.appendChild(renderer.domElement);
-
-        // Load your 3D model (replace 'yourModelFile.glb' with your actual model file name)
-        const loader = new THREE.GLTFLoader();
-        loader.load('yourModelFile.glb', function(gltf) {
-            scene.add(gltf.scene);
-            renderer.render(scene, camera);
-        });
-
-        camera.position.z = 5;
-
-        function animate() {
-            requestAnimationFrame(animate);
-            renderer.render(scene, camera);
-        }
-        animate();
-    </script>
+  <h1>3D Scene Viewer</h1>
+  <model-viewer 
+    src="naerumaaCOMPRESSITUDglb" 
+    alt="Naerumaa 3D Model" 
+    auto-rotate 
+    camera-controls 
+    ar>
+  </model-viewer>
 </body>
 </html>
